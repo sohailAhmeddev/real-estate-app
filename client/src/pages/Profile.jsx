@@ -72,7 +72,7 @@ export default function Profile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
+    // try {
       dispatch(updateUserStart());
       const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: 'POST',
@@ -89,9 +89,9 @@ export default function Profile() {
 
       dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
-    } catch (error) {
-      dispatch(updateUserFailure(error.message));
-    }
+    // } catch (error) {
+      // dispatch(updateUserFailure(error.message));
+    // }
   };
 
   const handleDeleteUser = async () => {

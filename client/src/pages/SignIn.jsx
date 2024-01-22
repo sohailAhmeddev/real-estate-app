@@ -6,7 +6,7 @@ import {
   signInSuccess,
   signInFailure,
 } from '../redux/user/userSlice';
-// import OAuth from '../components/OAuth';
+import OAuth from '../components/OAuth';
 
 export default function SignIn() {
 
@@ -24,7 +24,7 @@ export default function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
+    // try {
       dispatch(signInStart())
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
@@ -39,11 +39,12 @@ export default function SignIn() {
         dispatch(signInFailure(data.message))
         return;
       }
+      console.log(data, 'data')
       dispatch(signInSuccess(data));
       navigate('/');
-    } catch (error) {
-      dispatch(signInFailure(data.message))
-    }
+    // } catch (error) {
+    //   dispatch(signInFailure(data.message))
+    // }
   }
 
   return (
@@ -71,7 +72,7 @@ export default function SignIn() {
         >
           {loading ? 'Loading...' : 'Sign In'}
         </button>
-        {/* <OAuth /> */}
+         <OAuth />
       </form>
       <div className='flex gap-2 mt-5'>
         <p>Dont have an account?</p>
